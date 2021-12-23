@@ -2,33 +2,77 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <title>React App</title>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Facebook comment</title>
+  <style>
+    .a {
+      font-family: "Times New Roman", Times, serif;
+    }
+
+    p.b {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
 </head>
 
-<body>
+<body class="container" onload="getPosts();"> 
+  <br />
+  <button type="button" class="btn btn-primary" onclick="getPosts()">Refresh</button>
+  <br />
+  <div id="posts"></div>
+  <div id="post"></div>
+  <div id="comments"></div>
 
-    <div id="posts"></div>
-    <div id="post"></div>
-    <div id="comments"></div>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '298481855366316',
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: 'v12.0'
+      });
+    };
 
-    <button onclick="getPosts()">Get Posts</button>
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '298481855366316',
-                autoLogAppEvents: true,
-                xfbml: true,
-                version: 'v12.0'
-            });
-        };
+    
+   function checkLoginState(){
+//     FB.getLoginStatus(function (response) {
+//     if (response.status === 'connected') {
+//         var accessToken = response.authResponse.accessToken;
+//         console.log(accessToken)
+//     }
+// });  
 
-    </script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-    <script src="comment.js"></script>
+// FB.login(function(response) {
+//     if (response.authResponse) {
+//      console.log('Welcome!  Fetching your information.... ');
+//      FB.api('/me', function(response) {
+//        console.log('Good to see you, ' + response.name + '.');
+//      });
+//     } else {
+//      console.log('User cancelled login or did not fully authorize.');
+//     }
+// });
+    
+}
+
+  </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  <script src="comment.js"></script>
+  <script src="common.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
